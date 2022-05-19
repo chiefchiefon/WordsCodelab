@@ -30,6 +30,16 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //Based on how you set up the project, the minimum SDK version for the Tip Time app is API 19.
+        // That means the app can run on Android devices that are running Android platform version 19 or higher.
+        //
+        //To make your app work on these older versions of Android (known as backwards compatibility),
+        // add the vectorDrawables element to your app's build.gradle file.
+        // This enables you to use vector drawables on versions of the platform less than API 21,
+        // versus converting to PNGs when the project is built
+        //https://developer.android.com/guide/topics/graphics/vector-drawable-resources#vector-drawables-backward-solution
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
