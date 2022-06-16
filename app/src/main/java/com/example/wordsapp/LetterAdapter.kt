@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Adapter for the [RecyclerView] in [MainActivity].
  */
-class LetterAdapter :
+class LetterAdapter (private val onClickListener:(letter:String) -> Unit):
     RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
 
     // Generates a [CharRange] from 'A' to 'Z' and converts it to a list
@@ -64,13 +64,7 @@ class LetterAdapter :
         val item = list.get(position)
         holder.button.text = item.toString()
         holder.button.setOnClickListener {
-            val context = holder.view.context
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.LETTER, holder.button.text.toString())
-            // Here ends step 6. Set Up Implicit Intent
-
-            context.startActivity(intent)
-            // Here ends step 5. Set Up Explicit Intent
+            onClickListener.invoke(holder.button.text.toString())
         }
     }
 
