@@ -36,8 +36,8 @@ class LetterAdapter (private val onClickListener:(letter:String) -> Unit):
     /**
      * Provides a reference for the views needed to display items in your list.
      */
-    class LetterViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val button = view.findViewById<Button>(R.id.button_item)
+    class LetterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val button: Button = view.findViewById(R.id.button_item)
     }
 
     override fun getItemCount(): Int {
@@ -60,7 +60,7 @@ class LetterAdapter (private val onClickListener:(letter:String) -> Unit):
      * Replaces the content of an existing view with new data
      */
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
-        val item = list.get(position)
+        val item = list[position]
         holder.button.text = item.toString()
         holder.button.setOnClickListener {
             onClickListener.invoke(holder.button.text.toString())
