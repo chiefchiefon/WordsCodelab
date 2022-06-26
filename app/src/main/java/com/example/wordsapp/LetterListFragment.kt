@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.wordsapp.databinding.FragmentLetterListBinding
 
 class LetterListFragment : Fragment() {
@@ -38,7 +37,7 @@ class LetterListFragment : Fragment() {
         binding.recyclerView.adapter = LetterAdapter { letter ->
             val bundle = bundleOf(Pair(WordListFragment.LETTER, letter))
             parentFragmentManager.commit {
-                replace(R.id.fragmentContainer, WordListFragment::class.java , bundle)
+                replace(R.id.nav_host_fragment, WordListFragment::class.java , bundle)
             }
         }
     }
